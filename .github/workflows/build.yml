@@ -33,4 +33,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B -e verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=as-kara_pet-project -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300 -Dsonar.buildbreaker.skip=false
+        run: mvn -B -X -e verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=as-kara_pet-project -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300 -Dsonar.buildbreaker.skip=false
