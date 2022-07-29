@@ -12,35 +12,38 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PetUtils {
 
+    private PetUtils() {
+    }
+
     public static final String A = "Test A";
 
     public static String petNameConcatenate(List<Pet> pets) {
         return pets.stream()
-                .map(t -> t.getName())
-                .map(t -> t)
+                .map(Pet::getName)
                 .filter(Objects::nonNull)
                 .collect(Collectors.joining(","));
     }
 
     public static String petUniqueNameConcatenate(List<Pet> pets) {
         return pets.stream()
-                .map(t -> t.getName())
+                .map(Pet::getName)
                 .filter(Objects::nonNull)
                 .distinct()
                 .collect(Collectors.joining(","));
     }
 
-    public static String _GETGenderMessage(@NonNull Gender gender) {
+    public static String getGenderMessage(@NonNull Gender gender) {
         String result;
 
         switch (gender) {
-            default:
-                result = "Non-defined";
             case FEMALE:
                 result = "This is Female";
                 break;
             case MALE:
                 result = "It is Male";
+                break;
+            default:
+                result = "Non-defined";
                 break;
         }
 

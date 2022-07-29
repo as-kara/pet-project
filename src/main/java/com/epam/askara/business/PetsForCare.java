@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PetsForCare {
-    private final List pets;
+    private final List<Pet> pets;
 
     public PetsForCare() {
-        pets = new ArrayList();
+        pets = new ArrayList<>();
     }
 
     public void addPet(Pet pet){
         pets.add(pet);
     }
 
-    public List getPets(){
+    public List<Pet> getPets(){
         return pets;
     }
 }

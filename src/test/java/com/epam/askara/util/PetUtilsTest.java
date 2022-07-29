@@ -3,44 +3,59 @@ package com.epam.askara.util;
 import com.epam.askara.model.Pet;
 import com.epam.askara.model.enums.Gender;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PetUtilsTest {
 
-    @Test
-    void petNameConcatenate() {
-        List a = new ArrayList();
-        a.add(Pet.builder().name("A").build());
-        a.add(Pet.builder().name("B").build());
-        var result = PetUtils.petNameConcatenate(a);
-        assertEquals("A,B", result);
+    static Stream<Arguments> getPets() {
+        var sample = List.<Pet>of(Pet.builder().name("A").build(),
+                Pet.builder().name("B").build(),
+                Pet.builder().id(1L).build());
+
+        var sample2 = List.<Pet>of(Pet.builder().name("A").build());
+
+        return Stream.of(
+                Arguments.of(sample, "A,B"),
+                Arguments.of(sample2, "A"));
     }
 
-    @Test
-    void petNameConcatenate2() {
-        List list = new ArrayList();
-        list.add(Pet.builder().name("A").build());
-        var result = PetUtils.petNameConcatenate(list);
-        assertEquals("A", result);
+    @ParameterizedTest
+    @MethodSource("getPets")
+    void petNameConcatenate(List pets, String expected) {
+        // given & when
+        var actual = PetUtils.petNameConcatenate(pets);
+
+        // then
+        assertEquals(expected, actual);
     }
 
     @Test
     void petUniqueNameConcatenate() {
-        List list = new ArrayList();
-        list.add(Pet.builder().name("A").build());
-        list.add(Pet.builder().name("B").build());
-        list.add(Pet.builder().name("A").build());
-        var s = PetUtils.petUniqueNameConcatenate(list);
-        assertEquals("A,B", s);
+        // given
+        var list = List.<Pet>of(Pet.builder().name("A").build(),
+                Pet.builder().name("B").build(),
+                Pet.builder().name("A").build());
+
+        // when
+        var actual = PetUtils.petUniqueNameConcatenate(list);
+
+        // then
+        assertEquals("A,B", actual);
     }
 
     @Test
     void getGenderMessage() {
-        var result = PetUtils._GETGenderMessage(Gender.FEMALE);
-        assertEquals("This is Female", result);
+        // given & when
+        var actual = PetUtils.getGenderMessage(Gender.FEMALE);
+
+        // then
+        assertEquals("This is Female", actual);
     }
 }
