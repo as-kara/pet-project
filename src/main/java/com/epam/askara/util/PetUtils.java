@@ -8,10 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 
 @Slf4j
+@SuppressWarnings("all")
 public class PetUtils {
 
     public static final String A = "Test A";

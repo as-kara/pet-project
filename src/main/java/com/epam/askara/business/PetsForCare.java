@@ -5,6 +5,7 @@ import com.epam.askara.model.Pet;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("all")
 public class PetsForCare {
     private final List pets;
 

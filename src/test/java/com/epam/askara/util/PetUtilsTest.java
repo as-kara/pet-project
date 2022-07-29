@@ -2,7 +2,6 @@ package com.epam.askara.util;
 
 import com.epam.askara.model.Pet;
 import com.epam.askara.model.enums.Gender;
-import lombok.NonNull;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("all")
 class PetUtilsTest {
 
     @Test
