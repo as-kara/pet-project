@@ -10,7 +10,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
-@SuppressWarnings("all")
 public class PetUtils {
 
     public static final String A = "Test A";
