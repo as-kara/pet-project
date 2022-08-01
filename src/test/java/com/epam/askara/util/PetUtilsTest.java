@@ -52,6 +52,7 @@ class PetUtilsTest {
 
     static Stream<Arguments> getGenderDatas() {
         return Stream.of(
+                Arguments.of(null, "Non-defined"),
                 Arguments.of(Gender.FEMALE, "This is Female"),
                 Arguments.of(Gender.MALE, "It is Male"));
     }

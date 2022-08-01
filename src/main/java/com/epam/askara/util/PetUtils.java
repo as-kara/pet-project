@@ -32,7 +32,7 @@ public class PetUtils {
                 .collect(Collectors.joining(","));
     }
 
-    public static String getGenderMessage(@NonNull Gender gender) {
+    public static String getGenderMessage(Gender gender) {
         String result;
 
         switch (gender) {
