@@ -32,7 +32,7 @@ jobs:
       - name: Test with Maven
         run: mvn -B test
       - name: Upload analysis to SonarCloud
-        run: mvn -B sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=as-kara -Dsonar.projectKey=as-kara_pet-project
+        run: mvn -B sonar:sonar -Dsonar.jacoco.reportPath=build/reports/jacoco.xml -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=as-kara -Dsonar.projectKey=as-kara_pet-project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -42,4 +42,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=as-kara_pet-project
+        run: mvn -B verify test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.jacoco.reportPath=build/reports/jacoco.xml -Dsonar.projectKey=as-kara_pet-project
