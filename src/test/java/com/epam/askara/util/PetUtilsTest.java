@@ -50,13 +50,20 @@ class PetUtilsTest {
         assertEquals("A,B", actual);
     }
 
-    @Test
-    void getGenderMessage() {
+    static Stream<Arguments> getGenderDatas() {
+        return Stream.of(
+                Arguments.of(Gender.FEMALE, "This is Female"),
+                Arguments.of(Gender.MALE, "It is Male"));
+    }
+
+    @ParameterizedTest
+    @MethodSource("getGenderDatas")
+    void getGenderMessage(Gender gender, String expected) {
         // given & when
-        var actual = PetUtils.getGenderMessage(Gender.FEMALE);
+        var actual = PetUtils.getGenderMessage(gender);
 
         // then
-        assertEquals("This is Female", actual);
+        assertEquals(expected, actual);
     }
     
 }
