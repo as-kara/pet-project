@@ -2,7 +2,6 @@ package com.epam.askara.util;
 
 import com.epam.askara.model.Pet;
 import com.epam.askara.model.enums.Gender;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -14,8 +13,6 @@ public class PetUtils {
 
     private PetUtils() {
     }
-
-    public static final String A = "Test A";
 
     public static String petNameConcatenate(List<Pet> pets) {
         return pets.stream()
@@ -33,7 +30,11 @@ public class PetUtils {
     }
 
     public static String getGenderMessage(Gender gender) {
-        String result;
+        if(gender == null) {
+            return "Non-defined";
+        }
+
+        String result = null;
 
         switch (gender) {
             case FEMALE:
@@ -43,7 +44,6 @@ public class PetUtils {
                 result = "It is Male";
                 break;
             default:
-                result = "Non-defined";
                 break;
         }
 
